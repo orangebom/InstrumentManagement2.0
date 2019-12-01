@@ -1,11 +1,12 @@
-Flasky
-======
+20191201
+实现2.0，
+更换网站的数据库框架，使用SQLAlchemy
+实现用户组册、登录
 
-This repository contains the source code examples for the second edition of my O'Reilly book [Flask Web Development](http://www.flaskbook.com).
+20191129
+实现借用界面范围选择
+实现删除借用时间
+实现主界面刷新借用状态和借用人
 
-The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
-
-For Readers of the First Edition of the Book
---------------------------------------------
-
-The code examples for the first edition of the book were moved to a different repository: [https://github.com/miguelgrinberg/flasky-first-edition](https://github.com/miguelgrinberg/flasky-first-edition).
+20191124
+实现借用仪器界面显示
