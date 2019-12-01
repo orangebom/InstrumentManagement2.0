@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} 设备列表 {% endblock %}</h1>
+{% endblock %}
+
+
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/calendar.css')}}">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<div class="borrowinfo-content">
+    <div class="borrowinfo-header">
+        <h3>{{ post['name'] }}设备详情</h3>
+    </div>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+              <td id='instrument_id'>{{ post['id'] }}</td>
+              <td>品牌 : {{ post['brand'] }}</td>
+              <td>型号 : {{ post['model'] }}</td>
+              <td>SN : {{ post['SN'] }}</td>
+            </tr>
+            <tr>
+              <td>财产编号 : {{ post['assetNumber'] }}</td>
+              <td>使用状态 : {{ post['useState'] }}</td>
+              <td>维护状态 : {{ post['maintenanceState'] }}</td>
+              <td>位号 : {{ post['placeNumber'] }}</td>
+            </tr>
+            <tr>
+              <td>校验日期 : {{ post['calibrationDate'] }}</td>
+              <td>实验室 : {{ post['laboratory'] }} </td>
+              <td>RFID : {{ post['RFID'] }}</td>
+              <td></td>
+            </tr>
+          </tbody>
+        
+    </table>
+</div>
+<div class="row">
+    <div class="calendar">
+        <div class="title">
+            <h1 class="green" id="calendar-title">Month</h1>
+            <h2 class="green" id="calendar-year">Year</h2>
+            <a href="" id="pre">&#8249;</a>
+            <a href="" id="next">&#8250;</a>
+        </div>
+
+        <div class="body">
+            <div class="lightgrey body-list">
+                <ul>
+                    <li>SUN</li>
+                    <li>MON</li>
+                    <li>TUE</li>
+                    <li>WED</li>
+                    <li>THU</li>
+                    <li>FRI</li>
+                    <li>SAT</li>
+                </ul>
+
+            </div>
+
+            <div class="darkgrey body-list">
+                <ul id="days">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div  
+    {% if isborrow %} class="choose" 
+    {% else %} class="" style="display: none;" 
+    {% endif %}>
+        <input type="radio" id="continue" name="mode" />
+        <label for="continue">挂测(持续使用)</label><br>
+        <input type="radio" id="intermittent" name="mode" />
+        <label for="intermittent">调试(间隙使用)</label><br>
+        <input type="radio" id="free" name="mode" />
+        <label for="free">取消(空闲)</label><br>
+        <button onclick="putBorrowTime()"> 提交 </button>
+        <button onclick="deteleBorrowTime()"> 删除借用信息 </button>
+    </div>
+    
+    
+</div>
+<div id="myBorrowInfo" class="borrowinfo">
+
+    <!-- 弹窗内容 -->
+    <div class="borrowinfo-content">
+        <div class="borrowinfo-header">
+            <h4>借用人信息</h4>
+        </div>
+        <div class="borrowinfo-body">
+            <p>弹窗文本...</p>
+            <p>弹窗文本...</p>
+        </div>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+{% endblock %}

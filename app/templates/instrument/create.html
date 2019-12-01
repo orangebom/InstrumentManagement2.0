@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} Create {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form role="form" method="POST">
+  <label for="name">仪器名称</label>
+  <input name="name" id="name" required>
+  
+  <label for="brand">仪器品牌</label>
+  <input name="brand" id="brand">
+  
+  <label for="model">仪器型号</label>
+  <input name="model" id="model">
+  <br>
+  <label for="SN">SN</label>
+  <input name="SN" id="SN">
+  
+  <label for="assetNumber">资产编号</label>
+  <input name="assetNumber" id="assetNumber">
+  
+  <label for="maintenanceState">维护状态</label>
+  <input name="maintenanceState" id="maintenanceState">
+  <br>
+  <label for="useState">使用状态</label>
+  <input name="useState" id="useState">
+  
+  <label for="placeNumber">位号</label>
+  <input name="placeNumber" id="placeNumber">
+
+  <label for="calibrationDate">校准日期</label>
+  <input name="calibrationDate" id="calibrationDate">
+  <br>
+  <label for="laboratory">实验室</label>
+  <input name="laboratory" id="laboratory">
+
+  <label for="RFID">RFID</label>
+  <input name="RFID" id="RFID">
+  <br>
+  <label for="describe">设备描述</label>
+  <textarea name="describe" id="describe"></textarea>
+  <br>
+  <input type="submit" value="Save">
+</form>
+{% endblock %}

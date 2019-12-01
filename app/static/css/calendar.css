@@ -1,0 +1,187 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+
+html, body{
+    background:#f2f2f2;
+}
+
+.calendar{
+    float: left;
+    margin: 3%;
+    width: 75%;
+    height: 50%;
+    background: white;
+    box-shadow: 0px 5px 5px rgba(0,0,0,.1);
+}
+
+.choose{
+    float: right;
+    margin: 3% 3% 3% 0%;
+    width: 15%;
+    height: 50%;
+    background: white;
+    box-shadow: 0px 5px 5px rgba(0,0,0,.1);
+}
+
+.title{
+    height: 10%;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    position: relative;
+    text-align: center;
+}
+
+/* 列后清除浮动 */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#calendar-title{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 14px 0 0 0;
+}
+
+.body-list ul{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.body-list ul li{
+    list-style: none;
+    /*
+    display:inline-block;
+    width: 13.3%;
+    */
+
+    /*100/7 = 14.28%*/
+    display: block;
+    width: 14.28%;
+    float: left;
+
+    /*规定行高，垂直居中*/
+    height: 36px;
+    line-height: 36px;
+    box-sizing: border-box;
+    text-align: center;
+
+}
+
+#pre{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: url(prev.png) no-repeat 50% 50%;
+
+    /*没规定大小时，图片显示 0X0*/
+    width: 60px;
+    height: 70px;
+
+}
+
+#next{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: url(next.png) no-repeat 50% 50%;
+    width: 60px;
+    height: 70px;
+}
+
+
+
+.green{
+    color: #6ac13c;
+}
+
+.free{
+    background: #e9f8df;
+    border: 1px solid #6ac13c;
+}
+
+.continue{
+    background: #FFDAB9;
+    border: 1px solid coral;
+}
+
+.intermittent{
+    background: #FFEC8B;
+    border: 1px solid #FFD700;
+}
+
+.lightgrey{ /*浅灰色显示过去的日期*/
+    color:#a8a8a8;
+}
+.darkgrey{ /*深灰色显示将来的日期*/
+    color:#565656;
+}
+
+
+/*lable标签的大小、位置、背景颜色更改，在css选择时，“+”代表相邻元素，即当前元素的下一元素*/
+input[type="radio"] + label::before {
+    content: "\a0";  /*不换行空格*/
+    display: inline-block;
+    vertical-align: .2em;
+    width: 2em;
+    height: 2em;
+    margin-right: .2em;
+    border-radius: .2em;
+    background-color: silver;
+    text-indent: .15em;
+    line-height: .65;  /*行高不加单位，子元素将继承数字乘以自身字体尺寸而非父元素行高*/
+}
+input[type="radio"]:checked + label::before {
+
+}
+
+/* 模式按钮 */
+#continue[type="radio"]:checked + label::before {
+    background-color: coral;
+}
+
+#intermittent[type="radio"]:checked + label::before {
+    background-color: #FFD700;
+}
+
+#free[type="radio"]:checked + label::before {
+    background-color: #6ac13c;
+}
+
+input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+/* 弹窗 */
+.borrowinfo {
+     display: none; /* 默认隐藏 */
+    width: 75%;
+    margin: 3%; 
+    box-shadow: 0px 5px 5px rgba(0,0,0,.1); 
+}
+
+/* 弹窗内容 */
+.borrowinfo-content {
+    /*position: fixed;*/
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+}
+
+.borrowinfo-header {
+    padding: 2px 8px;
+    background-color: #5cb85c;
+    color: white;
+}
+
+.borrowinfo-body {
+    padding: 2px 8px;
+}
+

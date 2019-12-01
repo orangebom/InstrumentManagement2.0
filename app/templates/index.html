@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} 设备列表 {% endblock %}</h1>
+  
+{% endblock %}
+
+{% block page_content %}
+<input type="text" id="indexInput" class="table table-hover" onkeyup="indexSearch()" placeholder="搜索...">
+<table class="table" id="indexTable" >
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>名称</th>
+        <th>品牌</th>
+        <th>型号</th>
+        <th>维护状态</th>
+        <th>使用状态</th>
+        <th>借用人</th>
+        <th>操作</th>
+        {% if g.user %}
+        
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for post in posts %}
+        <tr class=
+        {% if post['useState'] == 'free' %}
+        "success"
+        {% elif post['useState'] == 'continue' %}
+        "danger"
+        {% else %}
+        "warning"
+        {% endif %}
+        >
+        <td>{{ post['id'] }}</td>
+        <td>{{ post['name'] }}</td>
+        <td>{{ post['brand'] }}</td>
+        <td>{{ post['model'] }}</td>
+        <td>{{ post['maintenanceState'] }}</td>
+        <td>{{ post['useState'] }}</td>
+        <td>{{ post['username'] }}</td>
+        <td>
+          <a class="btn btn-info" href="{{ url_for('instrument.lookBorrow', id=post['id']) }}">查看</a>
+        {% if current_user.can(Permission.ADMIN) %}
+          <a class="btn btn-info" href="{{ url_for('instrument.borrow', id=post['id']) }}">借用</a>
+          <a class="btn btn-info" href="{{ url_for('instrument.update', id=post['id']) }}">编辑</a>
+          <button class="btn btn-danger" onclick="if(confirm('确定删除？')) window.location.href='{{ url_for('instrument.delete', id=post['id']) }}'">删除</button>
+        </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+</table>
+
+    <!-- {% for post in posts %}
+    <div>
+    {{ post['id'] }}
+    {{ post['name'] }}
+    <div>
+    {% if not loop.last %}
+    <hr>
+    {% endif %}
+    {% endfor %} -->
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+{% endblock %}

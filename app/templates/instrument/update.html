@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %} Edit {{post['name']}} {% endblock %}</h1>
+{% endblock %}
+
+
+
+{% block page_content %}
+<form method="post">
+    <label for="name">仪器名称</label>
+    <input name="name" id="name" required value="{{ request.form['name'] or post['name'] }}">
+    
+    <label for="brand">仪器品牌</label>
+    <input name="brand" id="brand" value="{{ request.form['brand'] or post['brand'] }}">
+    
+    <label for="model">仪器型号</label>
+    <input name="model" id="model" value="{{ request.form['model'] or post['model'] }}">
+    <br>
+    <label for="SN">SN</label>
+    <input name="SN" id="SN" value="{{ request.form['SN'] or post['SN'] }}">
+    
+    <label for="assetNumber">资产编号</label>
+    <input name="assetNumber" id="assetNumber" value="{{ request.form['assetNumber'] or post['assetNumber'] }}">
+    
+    <label for="maintenanceState">维护状态</label>
+    <input name="maintenanceState" id="maintenanceState" value="{{ request.form['maintenanceState'] or post['maintenanceState'] }}">
+    <br>
+    <label for="useState">使用状态</label>
+    <input name="useState" id="useState" value="{{ request.form['useState'] or post['useState'] }}">
+    
+    <label for="placeNumber">位号</label>
+    <input name="placeNumber" id="placeNumber" value="{{ request.form['placeNumber'] or post['placeNumber'] }}">
+  
+    <label for="calibrationDate">校准日期</label>
+    <input name="calibrationDate" id="calibrationDate" value="{{ request.form['calibrationDate'] or post['calibrationDate'] }}">
+    <br>
+    <label for="laboratory">实验室</label>
+    <input name="laboratory" id="laboratory" value="{{ request.form['laboratory'] or post['laboratory'] }}">
+  
+    <label for="RFID">RFID</label>
+    <input name="RFID" id="RFID" value="{{ request.form['RFID'] or post['RFID'] }}">
+    <br>
+    <label for="describe">设备描述</label>
+    <textarea name="describe" id="describe">{{ request.form['describe'] or post['describe'] }}</textarea>
+    <br>
+    <input type="submit" value="Save">
+  </form>
+{% endblock %}
